@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ပရိုဂရမ်းမင်း ဘာသာစကားများ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Myanmar', sans-serif;
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(90deg, #2c3e50, #4a6491);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .intro {
+            text-align: center;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .language-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+            position: relative;
+        }
+        
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.8rem;
+            margin-left: 15px;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-body ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .card-body li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .card-body li:before {
+            content: "•";
+            color: #3498db;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        .python { background: linear-gradient(135deg, #306998, #4B8BBE); }
+        .javascript { background: linear-gradient(135deg, #F0DB4F, #F7DF1E); color: #323330; }
+        .java { background: linear-gradient(135deg, #5382A1, #007396); }
+        .csharp { background: linear-gradient(135deg, #68217A, #9B4F96); }
+        .php { background: linear-gradient(135deg, #777BB3, #4F5B93); }
+        .swift { background: linear-gradient(135deg, #FA7343, #F05138); }
+        
+        .comparison {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background: #f1f7ff;
+        }
+        
+        .resources {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resources h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.2rem;
+        }
+        
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .resource-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background: #e3f2fd;
+        }
+        
+        .resource-card h3 {
+            margin: 15px 0;
+            color: #2c3e50;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ပရိုဂရမ်းမင်း ဘာသာစကားများ</h1>
+            <div class="subtitle">ကွန်ပျူတာပရိုဂရမ်များ ရေးသားရာတွင် အသုံးပြုသော ဘာသာစကားများ</div>
+        </header>
+        
+        <section class="intro">
+            <p>ပရိုဂရမ်းမင်း ဘာသာစကားဆိုသည်မှာ ဆော့ဖ်ဝဲလ်နှင့် အက်ပလီကေးရှင်းများ ဖန်တီးရန်အတွက် ကွန်ပျူတာပညာရှင်များ အသုံးပြုသည့် ဘာသာစကားများ ဖြစ်ပါသည်။ ကွဲပြားသော ရည်ရွယ်ချက်များအတွက် ကွဲပြားသော ပရိုဂရမ်းမင်း ဘာသာစကားများ ရှိပြီး၊ ယင်းတို့အနက် အသုံးများသော ဘာသာစကားအချို့ကို အောက်တွင် ဖော်ပြထားပါသည်။</p>
+        </section>
+        
+        <div class="grid-container">
+            <div class="language-card">
+                <div class="card-header python">
+                    <div class="icon">🐍</div>
+                    <h3>Python</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၁၉၉၁</li>
+                        <li>အသုံးပြုသည့်နေရာ - ဝဘ်ဆိုဒ်၊ ဒေတာသိပ္ပံ၊ AI၊ စက်သင်ယူမှု</li>
+                        <li>ထူးခြားချက် - ရိုးရှင်းလွယ်ကူသော syntax</li>
+                        <li>ဥပမာ - YouTube, Instagram, NASA</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <div class="card-header javascript">
+                    <div class="icon">🌐</div>
+                    <h3>JavaScript</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၁၉၉၅</li>
+                        <li>အသုံးပြုသည့်နေရာ - ဝဘ်ဆိုဒ်၊ ဝဘ်အက်ပလီကေးရှင်း၊ ဆာဗာ</li>
+                        <li>ထူးခြားချက် - ဝဘ်ဘရောက်ဇာတိုင်း တွင် အလုပ်လုပ်နိုင်</li>
+                        <li>ဥပမာ - Facebook, Google Maps, Netflix</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <div class="card-header java">
+                    <div class="icon">☕</div>
+                    <h3>Java</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၁၉၉၅</li>
+                        <li>အသုံးပြုသည့်နေရာ - အန်းဒရွိုက်အက်ပလီကေးရှင်း၊ ကုန်သွယ်ရေးဆော့ဖ်ဝဲ</li>
+                        <li>ထူးခြားချက် - ပလက်ဖောင်းအမျိုးမျိုးတွင် အလုပ်လုပ်နိုင်</li>
+                        <li>ဥပမာ - Android apps, Minecraft, enterprise systems</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <div class="card-header csharp">
+                    <div class="icon">#</div>
+                    <h3>C#</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၂၀၀၀</li>
+                        <li>အသုံးပြုသည့်နေရာ - Windows applications, game development, web services</li>
+                        <li>ထူးခြားချက် - Microsoft .NET ပလက်ဖောင်းနှင့် အားကောင်း</li>
+                        <li>ဥပမာ - Unity game engine, Microsoft Office, Windows apps</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <div class="card-header php">
+                    <div class="icon">🐘</div>
+                    <h3>PHP</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၁၉၉၅</li>
+                        <li>အသုံးပြုသည့်နေရာ - Server-side web development</li>
+                        <li>ထူးခြားချက် - ဝဘ်ဆိုဒ်များ ဖန်တီးရန်အတွက် အထူးပြု</li>
+                        <li>ဥပမာ - Facebook, WordPress, Wikipedia</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="language-card">
+                <div class="card-header swift">
+                    <div class="icon">🐦</div>
+                    <h3>Swift</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>စတင်ခဲ့သည့်နှစ် - ၂၀၁၄</li>
+                        <li>အသုံးပြုသည့်နေရာ - iOS, macOS, watchOS app development</li>
+                        <li>ထူးခြားချက် - Apple ထုတ်ကုန်များအတွက် အကောင်းဆုံး</li>
+                        <li>ဥပမာ - Uber, Airbnb, LinkedIn iOS apps</li>
+                        <li>လေ့လာရန် အဆင်ပြေမှု - ⭐⭐⭐⭐</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <section class="comparison">
+            <h2>ပရိုဂရမ်းမင်း ဘာသာစကားများ နှိုင်းယှဉ်ချက်</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ဘာသာစကား</th>
+                        <th>အဆင့်</th>
+                        <th>လစာပျမ်းမျှ (US$)</th>
+                        <th>သုံးစွဲမှုနှုန်း</th>
+                        <th>စတင်သူများအတွက် သင့်တော်မှု</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Python</td>
+                        <td>1</td>
+                        <td>$120,000</td>
+                        <td>အလွန်မြင့်</td>
+                        <td>အလွန်ကောင်း</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>2</td>
+                        <td>$118,000</td>
+                        <td>အလွန်မြင့်</td>
+                        <td>ကောင်း</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>3</td>
+                        <td>$110,000</td>
+                        <td>မြင့်</td>
+                        <td>အလယ်အလတ်</td>
+                    </tr>
+                    <tr>
+                        <td>C#</td>
+                        <td>4</td>
+                        <td>$105,000</td>
+                        <td>မြင့်</td>
+                        <td>ကောင်း</td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                        <td>8</td>
+                        <td>$96,000</td>
+                        <td>မြင့်</td>
+                        <td>ကောင်း</td>
+                    </tr>
+                    <tr>
+                        <td>Swift</td>
+                        <td>10</td>
+                        <td>$115,000</td>
+                        <td>အလယ်အလတ်</td>
+                        <td>ကောင်း</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="resources">
+            <h2>လေ့လာရန် အခမဲ့အရင်းအမြစ်များ</h2>
+            <div class="resource-list">
+                <div class="resource-card">
+                    <div class="icon">🎓</div>
+                    <h3>freeCodeCamp</h3>
+                    <p>လက်တွေ့လုပ်ဆောင်ရသော သင်ခန်းစာများ</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon">📺</div>
+                    <h3>YouTube</h3>
+                    <p>အခမဲ့သင်ကြားပို့ချချက်များ</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon">📚</div>
+                    <h3>W3Schools</h3>
+                    <p>အွန်လိုင်း ပရိုဂရမ်းမင်းသင်ခန်းစာများ</p>
+                </div>
+                <div class="resource-card">
+                    <div class="icon">🧩</div>
+                    <h3>Codecademy</h3>
+                    <p>အခြေခံသင်တန်းအခမဲ့</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>စောဝေလွင်ဦး - ဘုန်းတော်ကြီးသင်ပညာရေးကျောင်း၊ ၉တန်း</p>
+            <p>ပရိုဂရမ်းမင်းကို စတင်လေ့လာလိုပါက Python သို့မဟုတ် JavaScript ဖြင့် စတင်သင့်ပါသည်။</p>
+        </footer>
+    </div>
+</body>
+</html>
